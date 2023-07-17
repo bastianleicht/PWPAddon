@@ -1,0 +1,63 @@
+{
+  "extensionDescription": {
+    "message": "Ein Passwort Link aus ausgewähltem Text generieren.",
+    "description": ""
+  },
+  "extensionName": {
+    "message": "Password Pusher Addon",
+    "description": "name of extension"
+  },
+  "browserAction_label": {
+    "message": "PWP Link kopieren",
+    "description": "Toolbar button label text."
+  },
+  "menuitem_label": {
+    "message": "Passwort Pusher Link kopieren",
+    "description": "Context menu item label text for page."
+  },
+  "fetch_error": {
+    "message": "Oh-oh, Fehler beim Erstellen der Kurz-URL.",
+    "description": "Error message when shortening URL was unsuccessful."
+  },
+  "service_title": {
+    "message": "PWP-Service",
+    "description": "Options: Label for selecting which service (pwpush, ...) to use."
+  },
+  "service_custom": {
+    "message": "Benutzerdefiniert (unten angeben)",
+    "description": "Options: Placeholder for custom URL option in dropdown."
+  },
+  "customurl_title": {
+    "message": "Benutzer-URL",
+    "description": "Options: Label for custom URL text field."
+  },
+
+  "remove_whitespace_title": {
+    "message": "Leerzeichen automatisch entfernen",
+    "description": "Options: Label for removing whitespace."
+  },
+  "remove_whitespace_description": {
+    "message": "Entfernt leere Zeichen am Anfang und Ende des Textes.",
+    "description": "Options: Help text for removing whitespace."
+  },
+
+
+  "pwp_expire_after_days_title": {
+    "message": "Link Gültigkeit (Tage)",
+    "description": "Options: Label for expiring link."
+  },
+  "pwp_expire_after_days_description": {
+    "message": "Entfernt den link nach der angegebenen Anzahl von Tagen.",
+    "description": "Options: Expire secret link and delete after this many days."
+  },
+
+
+  "save_button": {
+    "message": "Speichern",
+    "description": "Options: Button label for save options."
+  },
+  "saved_notice": {
+    "message": "Gespeichert!",
+    "description": "Options: Indicator that options were saved."
+  }
+}

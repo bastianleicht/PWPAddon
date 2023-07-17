@@ -1,0 +1,13 @@
+{
+  "name": "pwpaddon",
+  "version": "1.0.0",
+  "author": "Bastian Leicht",
+  "scripts": {
+    "build": "web-ext build --ignore-files dist/ webpack.*",
+    "test": "web-ext run --verbose"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "web-ext": "^6.5.0"
+  }
+}
