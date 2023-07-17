@@ -44,7 +44,7 @@
       <p>
         <input type="checkbox" id="clearWhitespace">
         <label for="clearWhitespace" data-i18n="remove_whitespace_title">clear whitespace?</label>
-        <em data-i18n="remove_whitespace_description">youtu.be</em>
+        <em data-i18n="remove_whitespace_description"></em>
       </p>
 
       <hr>
@@ -55,7 +55,28 @@
       <p>
         <label for="pwp_expire_after_days" data-i18n="pwp_expire_after_days_title">expire link after set amount</label>
         <input type="number" id="pwp_expire_after_days" min="1" max="90" value="7">
-        <em data-i18n="pwp_expire_after_days_description">youtu.be</em>
+        <em data-i18n="pwp_expire_after_days_description"></em>
+      </p>
+
+      <!-- Views Expiration -->
+      <p>
+        <label for="pwp_expire_after_views" data-i18n="expire_after_views_title">expire after set amount of views</label>
+        <input type="number" id="pwp_expire_after_views" min="1" max="100" value="1">
+        <em data-i18n="expire_after_views_description"></em>
+      </p>
+
+      <!-- Viewer Delete -->
+      <p>
+        <input type="checkbox" id="pwp_deletable_by_viewer">
+        <label for="pwp_deletable_by_viewer" data-i18n="deletable_by_viewer_title">delete by user</label>
+        <em data-i18n="deletable_by_viewer_description"></em>
+      </p>
+
+      <!-- retrieval protection -->
+      <p>
+        <input type="checkbox" id="pwp_retrieval_step">
+        <label for="pwp_retrieval_step" data-i18n="retrieval_step_title">delete by user</label>
+        <em data-i18n="retrieval_step_description"></em>
       </p>
 
       <p>

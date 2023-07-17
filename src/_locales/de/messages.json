@@ -50,7 +50,31 @@
     "message": "Entfernt den link nach der angegebenen Anzahl von Tagen.",
     "description": "Options: Expire secret link and delete after this many days."
   },
+  "expire_after_views_title": {
+    "message": "Link Gültigkeit (Zugriffe)",
+    "description": "Options: Label for expiring views."
+  },
+  "expire_after_views_description": {
+    "message": "Entfernt den link nach der angegebenen Anzahl von Zugriffen.",
+    "description": "Options: Expire secret link and delete after this many views."
+  },
+  "deletable_by_viewer_title": {
+    "message": "Sofortiges löschen",
+    "description": "Options: Label for viewer delete."
+  },
+  "deletable_by_viewer_description": {
+    "message": "Erlaubt dem Empfänger den Link sofort zu löschen.",
+    "description": "Options: Allow users to delete passwords once retrieved."
+  },
 
+  "retrieval_step_title": {
+    "message": "1-Klick-Abruf",
+    "description": "Options: Label for retrival step."
+  },
+  "retrieval_step_description": {
+    "message": "Schutz gegen Chat-Systeme und URL-Scanner, die die Anzahl der Ansichten „auffressen“ können.",
+    "description": "Options: Helps to avoid chat systems and URL scanners from eating up views."
+  },
 
   "save_button": {
     "message": "Speichern",
