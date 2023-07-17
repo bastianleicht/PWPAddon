@@ -31,6 +31,10 @@
     "message": "Benutzer-URL",
     "description": "Options: Label for custom URL text field."
   },
+  "customurl_title_preview": {
+    "message": "Die URL sollte so aussehen: 'https://pwpush.com'",
+    "description": "Options: Label for custom URL text field."
+  },
 
   "remove_whitespace_title": {
     "message": "Leerzeichen automatisch entfernen",
