@@ -23,14 +23,3 @@ export default function discoverSelectedContent() {
     });
   });
 }
-
-/** Listen to content scripts posting back after discovery */
-browser.runtime.onMessage.addListener(msg => {
-  // If specialty discoverer returns it did not find anything, apply default
-  // discovery mechanism and listen again.
-  if (!msg.url) {
-    runDiscoveryScript('default');
-  } else {
-    //processPassword(msg);
-  }
-});

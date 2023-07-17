@@ -45,19 +45,6 @@ function init() {
       console.log(id, options[id].attr, val);
       document.getElementById(id)[options[id].attr] = val;
     });
-
-    showHideDetails();
-  });
-
-  document.querySelector('#service').addEventListener('change', showHideDetails);
-}
-
-function showHideDetails() {
-  // Show / hide details depending on service selection.
-  let selected = document.querySelector('#service').value;
-
-  ['custom'].forEach(service => {
-    document.querySelector('#' + service + '_details').style.display = (selected === service) ? 'block': 'none';
   });
 }
 
