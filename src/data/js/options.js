@@ -41,6 +41,9 @@ function init() {
   browser.storage.local.get('prefs').then(res => {
     let currentPrefs = res['prefs'] || {};
     Object.keys(options).forEach(id => {
+      console.log("save");
+      console.log(options)
+      console.log(id, options[id].attr, document.getElementById(id)[options[id].attr]);
       let val = (typeof currentPrefs[id] !== 'undefined') ? currentPrefs[id] : options[id].def;
       console.log(id, options[id].attr, val);
       document.getElementById(id)[options[id].attr] = val;
