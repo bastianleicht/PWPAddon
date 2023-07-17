@@ -17,10 +17,10 @@ const serviceUrls = {
 
       let form = new FormData();
       form.append('password[payload]', password);
-      form.append('password[expire_after_days]', 10);  // Expire secret link and delete after this many days.
-      form.append('password[expire_after_views]', 10);  // Expire secret link and delete after this many views.
-      form.append('password[deletable_by_viewer]', true);  // Allow users to delete passwords once retrieved.
-      form.append('password[retrieval_step]', true);  // Helps to avoid chat systems and URL scanners from eating up views.
+      form.append('password[expire_after_days]', prefs.pwp_expire_after_days);  // Expire secret link and delete after this many days.
+      form.append('password[expire_after_views]', prefs.pwp_expire_after_views);  // Expire secret link and delete after this many views.
+      form.append('password[deletable_by_viewer]', prefs.pwp_deletable_by_viewer);  // Allow users to delete passwords once retrieved.
+      form.append('password[retrieval_step]', prefs.pwp_retrieval_step);  // Helps to avoid chat systems and URL scanners from eating up views.
 
       return fetch('https://pwpush.com/p.json', {
         method: 'POST',
