@@ -1,8 +1,4 @@
 const options = {
-  service: {
-    attr: 'value',
-    def: 'custom'
-  },
   custom_url: {
     attr: 'value',
     def: ''
