@@ -11,10 +11,10 @@
     }
   },
   "icons": {
-    "16": "data/img/icon-16.png",
-    "32": "data/img/icon-32.png",
-    "48": "data/img/icon-48.png",
-    "64": "data/img/icon-64.png"
+    "16": "data/img/icon16.png",
+    "32": "data/img/icon32.png",
+    "48": "data/img/icon48.png",
+    "128": "data/img/icon128.png"
   },
   "manifest_version": 2,
   "permissions": [
@@ -35,11 +35,11 @@
     }
   },
   "browser_action": {
-    "default_icon": "data/img/icon.svg",
+    "default_icon": "data/img/icon-128.png",
     "theme_icons": [{
-      "light": "data/img/icon-white.svg",
-      "dark": "data/img/icon-black.svg",
-      "size": 32
+      "light": "data/img/icon-128.png",
+      "dark": "data/img/icon-128.png",
+      "size": 128
     }],
     "default_area": "navbar",
     "default_title": "__MSG_browserAction_label__"
