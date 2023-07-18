@@ -63,7 +63,7 @@ async function finalizeUrl(result) {
 
     // Add retrieval step if enabled.
     if(prefs.pwp_retrieval_step === true) {
-      copyText += 'r/';
+      copyText += '/r/';
     }
 
     navigator.clipboard.writeText(copyText);
