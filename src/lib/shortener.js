@@ -59,13 +59,14 @@ async function finalizeUrl(result) {
     let full_url = prefs.custom_url || 'https://pwpush.com/';
 
     copyText = full_url + '/p/' + result;
+    console.log('copyText', copyText)
 
     // Add retrieval step if enabled.
     if(prefs.pwp_retrieval_step === true) {
-      copyText = full_url + 'r/';
+      copyText += 'r/';
     }
 
-    await navigator.clipboard.writeText(copyText);
+    navigator.clipboard.writeText(copyText);
   });
 }
 
