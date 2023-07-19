@@ -3,7 +3,7 @@
 ![](./pwpaddon.png)
 
 ## Installing
-Copy ShortURL is available on the [Mozilla Add-ons website](https://addons.mozilla.org/addon/. You can install it with Firefox by simply pressing the Install button there.
+Copy ShortURL is available on the [Mozilla Add-ons website](https://addons.mozilla.org/addon/password-pusher-addon/). You can install it with Firefox by simply pressing the Install button there.
 
 ## Contributing
 Copy ShortURL is open source. If you'd like to contribute, feel free to open or comment on an [Issue on GitHub](https://github.com/bastianleicht/PWPAddon/issues).
