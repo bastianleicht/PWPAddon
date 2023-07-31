@@ -1,4 +1,5 @@
 import discoverSelectedContent from "./discover.js";
+export const pwpNotification = "pwp-notification";
 
 const _ = browser.i18n.getMessage;
 

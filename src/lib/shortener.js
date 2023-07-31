@@ -1,5 +1,7 @@
 const _ = browser.i18n.getMessage;
 
+import {pwpNotification} from "./main.js";
+
 /** Create a short URL from is.gd, tinyurl, etc. */
 
 function createPWPLink(password) {
@@ -84,5 +86,16 @@ export default function processPassword(selected_password) {
     }
 
     createPWPLink(selected_password).then(result => finalizeUrl(result));
+  });
+}
+
+function notify(message)
+{
+  browser.notifications.create(pwpNotification, {
+    "type": "basic",
+    "title": "PWPush",
+    "message": message,
+    "priority": 1,
+    "iconUrl": browser.extension.getURL("data/img/icon-48.png"),
   });
 }
