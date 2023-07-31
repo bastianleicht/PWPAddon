@@ -35,7 +35,6 @@
     "message": "Die URL sollte so aussehen: 'https://pwpush.com'",
     "description": "Options: Label for custom URL text field."
   },
-
   "remove_whitespace_title": {
     "message": "Leerzeichen automatisch entfernen",
     "description": "Options: Label for removing whitespace."
@@ -44,8 +43,6 @@
     "message": "Entfernt leere Zeichen am Anfang und Ende des Textes.",
     "description": "Options: Help text for removing whitespace."
   },
-
-
   "pwp_expire_after_days_title": {
     "message": "Link Gültigkeit (Tage)",
     "description": "Options: Label for expiring link."
@@ -70,7 +67,6 @@
     "message": "Erlaubt dem Empfänger den Link sofort zu löschen.",
     "description": "Options: Allow users to delete passwords once retrieved."
   },
-
   "retrieval_step_title": {
     "message": "1-Klick-Abruf",
     "description": "Options: Label for retrival step."
@@ -79,7 +75,6 @@
     "message": "Schutz gegen Chat-Systeme und URL-Scanner, die die Anzahl der Ansichten „auffressen“ können.",
     "description": "Options: Helps to avoid chat systems and URL scanners from eating up views."
   },
-
   "save_button": {
     "message": "Speichern",
     "description": "Options: Button label for save options."
