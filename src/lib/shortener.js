@@ -69,6 +69,9 @@ async function finalizeUrl(result) {
     }
 
     navigator.clipboard.writeText(copyText);
+
+    notify(_('copied_to_clipboard'));
+
   });
 }
 
