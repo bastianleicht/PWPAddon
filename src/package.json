@@ -7,8 +7,7 @@
     "build": "web-ext build --ignore-files dist/ webpack.*",
     "test": "web-ext run --verbose --browser-console --start-url example.com"
   },
-  "devDependencies": {},
   "dependencies": {
-    "web-ext": "^7.6.2"
+    "web-ext": "^0.0.1"
   }
 }
