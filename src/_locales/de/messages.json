@@ -7,6 +7,10 @@
     "message": "Password Pusher Addon",
     "description": "name of extension"
   },
+  "extensionTitle": {
+    "message": "PWPAddon: Send passwords securely",
+    "description": "title of extension"
+  },
   "browserAction_label": {
     "message": "PWP Link kopieren",
     "description": "Toolbar button label text."

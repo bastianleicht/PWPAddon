@@ -2,8 +2,7 @@ const _ = browser.i18n.getMessage;
 
 import {pwpNotification} from "./main.js";
 
-/** Create a short URL from is.gd, tinyurl, etc. */
-
+/** Push the password to the selected Service */
 function createPWPLink(password) {
   let req;
 
