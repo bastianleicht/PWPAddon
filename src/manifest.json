@@ -10,17 +10,16 @@
     "48": "data/img/icon-48.png",
     "128": "data/img/icon-128.png"
   },
-  "manifest_version": 2,
+  "manifest_version": 3,
   "permissions": [
     "activeTab",
     "clipboardWrite",
     "contextMenus",
     "notifications",
-    "storage",
-    "<all_urls>"
+    "storage"
   ],
   "background": {
-    "page": "data/html/background-page.html"
+    "scripts": ["lib/main.js"]
   },
   "commands": {
     "shorten-page-url": {
@@ -28,7 +27,7 @@
       "description": "Copy ShortURL of the current page"
     }
   },
-  "browser_action": {
+  "action": {
     "default_icon": "data/img/icon-128.png",
     "theme_icons": [{
       "light": "data/img/icon-128.png",
@@ -40,7 +39,6 @@
     "default_popup": "data/html/options.html"
   },
   "options_ui": {
-    "page": "data/html/options.html",
-    "browser_style": true
+    "page": "data/html/options.html"
   }
 }
