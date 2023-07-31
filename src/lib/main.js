@@ -18,7 +18,7 @@ browser.contextMenus.create({
 browser.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
   case 'shorten-page':
-    discoverSelectedContent();
+    processPassword(info.selectionText);
     break;
   }
 });
