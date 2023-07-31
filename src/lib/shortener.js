@@ -1,4 +1,11 @@
-const _ = browser.i18n.getMessage;
+var browserInterface;
+if (typeof chrome.app !== 'undefined') {
+  browserInterface = chrome;
+} else {
+  browserInterface = browser;
+}
+
+const _ = browserInterface.i18n.getMessage;
 
 import {pwpNotification} from "./main.js";
 
@@ -8,7 +15,7 @@ function createPWPLink(password) {
 
   try {
     // Get shortening service from prefs.
-    return browser.storage.local.get('prefs').then(ret => {
+    return browserInterface.storage.local.get('prefs').then(ret => {
       const prefs = ret['prefs'] || {};
 
       const url = prefs.custom_url || 'https://pwpush.com/';
@@ -55,7 +62,7 @@ function createPWPLink(password) {
 async function finalizeUrl(result) {
   console.log('finalizeUrl', result)
 
-  browser.storage.local.get('prefs').then(async ret => {
+  browserInterface.storage.local.get('prefs').then(async ret => {
     const prefs = ret['prefs'] || {};
     let copyText;
 
@@ -81,7 +88,7 @@ async function finalizeUrl(result) {
 export default function processPassword(selected_password) {
   console.log("selected_password", selected_password);
 
-  browser.storage.local.get('prefs').then(ret => {
+  browserInterface.storage.local.get('prefs').then(ret => {
     const prefs = ret['prefs'] || {};
 
     if(prefs.clearWhitespace === true) {
@@ -95,11 +102,11 @@ export default function processPassword(selected_password) {
 
 export function notify(message)
 {
-  browser.notifications.create(pwpNotification, {
+  browserInterface.notifications.create(pwpNotification, {
     "type": "basic",
     "title": "PWPush",
     "message": message,
-    "priority": 1,
+    "priority": 2,
     "iconUrl": browser.runtime.getURL("data/img/icon-48.png"),
   });
 }
