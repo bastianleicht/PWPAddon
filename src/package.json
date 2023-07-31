@@ -1,10 +1,11 @@
 {
   "name": "pwpaddon",
   "version": "1.0.2",
+  "license": "MIT",
   "author": "Bastian Leicht",
   "scripts": {
     "build": "web-ext build --ignore-files dist/ webpack.*",
-    "test": "web-ext run --verbose"
+    "test": "web-ext run --verbose --browser-console --start-url example.com"
   },
   "devDependencies": {},
   "dependencies": {
