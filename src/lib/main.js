@@ -29,3 +29,10 @@ browser.commands.onCommand.addListener((cmd) => {
     discoverSelectedContent();
   }
 });
+
+browser.browserAction.onClicked.addListener(() => {
+  const clearing = browser.notifications.clear(pwpNotification);
+  clearing.then(() => {
+    console.log("cleared");
+  });
+});
