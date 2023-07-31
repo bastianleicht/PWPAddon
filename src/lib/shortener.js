@@ -34,12 +34,14 @@ function createPWPLink(password) {
           console.log('createPWPLink', result)
           return result;
         } else {
-          throw new Error(_('fetch_error'));
+          notify(_('fetch_error'));
+          console.error('createPWPLink_Error', response)
         }
       });
 
     }).catch(err => {
       console.log(err.message);
+      notify(err.message);
       throw new Error(_('fetch_error'));
     });
 
@@ -92,13 +94,13 @@ export default function processPassword(selected_password) {
   });
 }
 
-function notify(message)
+export function notify(message)
 {
   browser.notifications.create(pwpNotification, {
     "type": "basic",
     "title": "PWPush",
     "message": message,
     "priority": 1,
-    "iconUrl": browser.extension.getURL("data/img/icon-48.png"),
+    "iconUrl": browser.runtime.getURL("data/img/icon-48.png"),
   });
 }
