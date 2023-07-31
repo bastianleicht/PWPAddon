@@ -36,7 +36,8 @@
       "size": 128
     }],
     "default_area": "navbar",
-    "default_title": "__MSG_browserAction_label__"
+    "default_title": "__MSG_browserAction_label__",
+    "default_popup": "data/html/options.html"
   },
   "options_ui": {
     "page": "data/html/options.html",
