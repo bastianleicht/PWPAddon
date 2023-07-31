@@ -21,7 +21,7 @@ browserInterface.runtime.onInstalled.addListener(function () {
   browserInterface.contextMenus.create({
     id: 'shorten-page',
     title: _('menuitem_label'),
-    contexts: ['page', 'tab', 'selection']
+    contexts: ['selection']
   });
 });
 
