@@ -1,4 +1,8 @@
-import discoverSelectedContent from "./discover.js";
+import processPassword from "./shortener.js";
+
+/*if(chrome.app !== undefined) {
+  var browser = chrome;
+}*/
 export const pwpNotification = "pwp-notification";
 
 const _ = browser.i18n.getMessage;
@@ -6,13 +10,14 @@ const _ = browser.i18n.getMessage;
 console.log("loaded extensions");
 
 /** Add context menus and toolbar button. */
-// per-page
-browser.contextMenus.create({
-  id: 'shorten-page',
-  title: _('menuitem_label'),
-  contexts: ['page', 'tab', 'selection']
+browser.runtime.onInstalled.addListener(function () {
+  // per-page
+  browser.contextMenus.create({
+    id: 'shorten-page',
+    title: _('menuitem_label'),
+    contexts: ['page', 'tab', 'selection']
+  });
 });
-
 
 /** Process content menu clicks */
 browser.contextMenus.onClicked.addListener((info, tab) => {
