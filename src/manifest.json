@@ -2,7 +2,7 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "author": "Bastian Leicht",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "default_locale": "de",
   "icons": {
     "16": "data/img/icon-16.png",
