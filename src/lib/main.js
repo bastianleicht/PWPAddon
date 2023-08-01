@@ -39,7 +39,7 @@ browserInterface.commands.onCommand.addListener((cmd) => {
   }
 });
 
-browserInterface.action.onClicked.addListener(() => {
+browserInterface.browserAction.onClicked.addListener(() => {
   const clearing = browserInterface.notifications.clear(pwpNotification);
   clearing.then(() => {
     console.log("cleared");

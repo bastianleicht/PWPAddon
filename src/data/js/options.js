@@ -1,3 +1,12 @@
+var browserInterface;
+if (typeof chrome.app !== 'undefined') {
+  console.log("We are running on Chrome!");
+  browserInterface = chrome;
+} else {
+  console.log("We are running on Firefox!");
+  browserInterface = browser;
+}
+
 const options = {
   custom_url: {
     attr: 'value',
@@ -30,11 +39,11 @@ let savedTimeout; // Hide saved indicator after a bit.
 function init() {
   // Initialize i18n.
   document.querySelectorAll('[data-i18n]').forEach(node => {
-    node.textContent = browser.i18n.getMessage(node.dataset.i18n);
+    node.textContent = browserInterface.i18n.getMessage(node.dataset.i18n);
   });
 
   // Restore settings.
-  browser.storage.local.get('prefs').then(res => {
+  browserInterface.storage.local.get('prefs').then(res => {
     let currentPrefs = res['prefs'] || {};
     Object.keys(options).forEach(id => {
       console.log("save");
@@ -57,7 +66,7 @@ function saveOptions(e) {
     console.log(id, options[id].attr, document.getElementById(id)[options[id].attr]);
     toSave['prefs'][id] = document.getElementById(id)[options[id].attr];
   });
-  browser.storage.local.set(toSave).then(() => {
+  browserInterface.storage.local.set(toSave).then(() => {
     // Indicate that we saved succesfully.
     let saved = document.querySelector('#saved');
 
