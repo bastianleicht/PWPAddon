@@ -23,14 +23,6 @@
     "message": "Oh-oh, Fehler beim Erstellen der Kurz-URL.",
     "description": "Error message when shortening URL was unsuccessful."
   },
-  "service_title": {
-    "message": "PWP-Service",
-    "description": "Options: Label for selecting which service (pwpush, ...) to use."
-  },
-  "service_custom": {
-    "message": "Benutzerdefiniert (unten angeben)",
-    "description": "Options: Placeholder for custom URL option in dropdown."
-  },
   "customurl_title": {
     "message": "Benutzer-URL",
     "description": "Options: Label for custom URL text field."
@@ -73,7 +65,7 @@
   },
   "retrieval_step_title": {
     "message": "1-Klick-Abruf",
-    "description": "Options: Label for retrival step."
+    "description": "Options: Label for retrieval step."
   },
   "retrieval_step_description": {
     "message": "Schutz gegen Chat-Systeme und URL-Scanner, die die Anzahl der Ansichten „auffressen“ können.",
