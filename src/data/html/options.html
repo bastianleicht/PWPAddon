@@ -2,80 +2,89 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.min.js"></script>
     <style>
-    body {
-      background-color: white;
-      padding: 1em;
-    }
-    label[for], p em {
-      display: block;
-    }
-    input[type=checkbox] {
-      float: left;
-      margin-right: 1em;
-    }
-    p {
-      margin-bottom: 2em;
-    }
-    #saved {
-      font-weight: bold;
-    }
+      body {
+        width: 400px;
+        height: 500px;
+      }
+      .tab-pane {
+        padding: 10px;
+      }
     </style>
   </head>
 
-  <body>
+  <body style="overflow: hidden">
     <form>
-      <!-- Custom URL -->
-      <p>
-        <label for="custom_url" data-i18n="customurl_title">custom url</label>
-        <input type="text" id="custom_url">
-        <em data-i18n="customurl_title_preview"></em>
-      </p>
+      <h2  class="text-center">Password Pusher Settings</h2>
 
-      <!-- Clear Whitespace -->
-      <p>
-        <input type="checkbox" id="clearWhitespace">
-        <label for="clearWhitespace" data-i18n="remove_whitespace_title">clear whitespace?</label>
-        <em data-i18n="remove_whitespace_description"></em>
-      </p>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Link Settings</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="custom-tab" data-bs-toggle="tab" data-bs-target="#custom" type="button" role="tab" aria-controls="custom" aria-selected="false">Custom Settings</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <!-- Link Expiration -->
+          <p>
+            <label for="pwp_expire_after_days" data-i18n="pwp_expire_after_days_title">expire link after set amount</label>
+            <input type="number" id="pwp_expire_after_days" min="1" max="90" value="7">
+            <br>
+            <small data-i18n="pwp_expire_after_days_description"></small>
+          </p>
 
-      <hr>
+          <!-- Views Expiration -->
+          <p>
+            <label for="pwp_expire_after_views" data-i18n="expire_after_views_title">expire after set amount of views</label>
+            <input type="number" id="pwp_expire_after_views" min="1" max="100" value="1">
+            <br>
+            <small data-i18n="expire_after_views_description"></small>
+          </p>
 
-      <h2>Password Pusher Settings</h2>
+          <!-- Viewer Delete -->
+          <p>
+            <input type="checkbox" id="pwp_deletable_by_viewer">
+            <label for="pwp_deletable_by_viewer" data-i18n="deletable_by_viewer_title">delete by user</label>
+            <br>
+            <small data-i18n="deletable_by_viewer_description"></small>
+          </p>
 
-      <!-- Link Expiration -->
-      <p>
-        <label for="pwp_expire_after_days" data-i18n="pwp_expire_after_days_title">expire link after set amount</label>
-        <input type="number" id="pwp_expire_after_days" min="1" max="90" value="7">
-        <em data-i18n="pwp_expire_after_days_description"></em>
-      </p>
+          <!-- retrieval protection -->
+          <p>
+            <input type="checkbox" id="pwp_retrieval_step">
+            <label for="pwp_retrieval_step" data-i18n="retrieval_step_title">delete by user</label>
+            <br>
+            <small data-i18n="retrieval_step_description"></small>
+          </p>
 
-      <!-- Views Expiration -->
-      <p>
-        <label for="pwp_expire_after_views" data-i18n="expire_after_views_title">expire after set amount of views</label>
-        <input type="number" id="pwp_expire_after_views" min="1" max="100" value="1">
-        <em data-i18n="expire_after_views_description"></em>
-      </p>
+          <!-- Clear Whitespace -->
+          <p>
+            <input type="checkbox" id="clearWhitespace">
+            <label for="clearWhitespace" data-i18n="remove_whitespace_title">clear whitespace?</label>
+            <br>
+            <small data-i18n="remove_whitespace_description"></small>
+          </p>
+        </div>
 
-      <!-- Viewer Delete -->
-      <p>
-        <input type="checkbox" id="pwp_deletable_by_viewer">
-        <label for="pwp_deletable_by_viewer" data-i18n="deletable_by_viewer_title">delete by user</label>
-        <em data-i18n="deletable_by_viewer_description"></em>
-      </p>
+        <div class="tab-pane fade" id="custom" role="tabpanel" aria-labelledby="custom-tab">
+          <!-- Custom URL -->
+          <p>
+            <label for="custom_url" data-i18n="customurl_title">custom url</label>
+            <input type="text" id="custom_url">
+            <br>
+            <small data-i18n="customurl_title_preview"></small>
+          </p>
+        </div>
+      </div>
 
-      <!-- retrieval protection -->
-      <p>
-        <input type="checkbox" id="pwp_retrieval_step">
-        <label for="pwp_retrieval_step" data-i18n="retrieval_step_title">delete by user</label>
-        <em data-i18n="retrieval_step_description"></em>
-      </p>
-
-      <p>
-        <button type="submit" data-i18n="save_button">Save</button>
+      <p class="text-center">
+        <button class="btn btn-primary" style="width: 100%;" type="submit" data-i18n="save_button">Save</button>
         <span id="saved" style="display:none" data-i18n="saved_notice">(saved)</span>
       </p>
-
     </form>
 
     <script src="../js/options.js"></script>
