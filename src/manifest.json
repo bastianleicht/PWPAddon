@@ -10,22 +10,21 @@
     "48": "data/img/icon-48.png",
     "128": "data/img/icon-128.png"
   },
-  "manifest_version": 2,
+  "manifest_version": 3,
   "permissions": [
-    "activeTab",
+    "tabs",
     "clipboardWrite",
     "contextMenus",
     "notifications",
-    "storage"
+    "storage",
+    "scripting"
   ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{7652a3c8-b935-43d1-8472-77630b824fd2}",
-      "strict_min_version": "109.0"
-    }
-  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
-    "scripts": ["lib/main.js"]
+    "scripts": ["lib/main.js"],
+    "service_worker": "lib/main.js"
   },
   "commands": {
     "shorten-page-url": {
@@ -33,18 +32,18 @@
       "description": "Copy ShortURL of the current page"
     }
   },
-  "browser_action": {
-    "default_icon": "data/img/icon-128.png",
-    "theme_icons": [{
-      "light": "data/img/icon-128.png",
-      "dark": "data/img/icon-128.png",
-      "size": 128
-    }],
-    "default_area": "navbar",
+  "action": {
+    "default_icon": {
+      "16": "data/img/icon-16.png",
+      "32": "data/img/icon-32.png",
+      "48": "data/img/icon-48.png",
+      "128": "data/img/icon-128.png"
+    },
     "default_title": "__MSG_browserAction_label__",
     "default_popup": "data/html/options.html"
   },
   "options_ui": {
-    "page": "data/html/options.html"
+    "page": "data/html/options.html",
+    "open_in_tab": false
   }
 }
