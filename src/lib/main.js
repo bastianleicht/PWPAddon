@@ -36,15 +36,26 @@ browserAPI.action.onClicked.addListener(() => {
   });
 });
 
-
 /** Push the password to the selected Service */
 function createPWPLink(password) {
-  let req;
-
   try {
-    // Get shortening service from prefs.
-    return browserInterface.storage.local.get('prefs').then(ret => {
-      const prefs = ret['prefs'] || {};
+    return browserAPI.storage.local.get('prefs').then(ret => {
+      let prefs;
+
+      if (ret['prefs'] instanceof Promise) {
+        console.info("no prefs");
+        const defaultPrefs = {
+          custom_url: 'https://pwpush.com/',
+          clearWhitespace: false,
+          pwp_expire_after_days: 7,
+          pwp_expire_after_views: 1,
+          pwp_deletable_by_viewer: true,
+          pwp_retrieval_step: true
+        };
+        prefs = defaultPrefs;
+      } else {
+        prefs = ret['prefs'] || {};
+      }
 
       const url = prefs.custom_url || 'https://pwpush.com/';
 
@@ -55,36 +66,39 @@ function createPWPLink(password) {
       form.append('password[deletable_by_viewer]', prefs.pwp_deletable_by_viewer);  // Allow users to delete passwords once retrieved.
       form.append('password[retrieval_step]', prefs.pwp_retrieval_step);  // Helps to avoid chat systems and URL scanners from eating up views.
 
-      req = fetch(url + '/p.json', {
+      console.log(prefs);
+
+      return fetch(url + '/p.json', {
         method: 'POST',
         body: form
-      });
-
-      return req.then(async response => {
+      }).then(async response => {
         if (response.ok) {
           const res = await response.json();
-          console.log('createPWPLink JSON', res)
+          console.log('createPWPLink JSON', res);
           let result = res['url_token'];
-          console.log('createPWPLink', result)
+          console.log('createPWPLink', result);
           return result;
         } else {
-          notify(_('fetch_error'));
-          console.error('createPWPLink_Error', response)
+          if(response.status === 422) {
+            notify(_('setup_error'));
+          } else {
+            console.error('createPWPLink_Error', JSON.stringify(response));
+            notify(_('fetch_error'));
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
       });
-
     }).catch(err => {
-      console.log(err.message);
-      notify(err.message);
+      console.error(err.message);
+      notify(_('setup_error'));
       throw new Error(_('fetch_error'));
     });
-
   } catch (e) {
-    notify(e.message);
-    return false;
+    console.error('Unexpected error:', e);
+    notify(_('fetch_error'));
+    return Promise.reject(e);
   }
 }
-
 
 /** Finalize (notify and copy to clipboard) a detected or generated URL. */
 async function finalizeUrl(result) {

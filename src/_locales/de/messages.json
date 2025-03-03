@@ -23,6 +23,10 @@
     "message": "Oh-oh, Fehler beim Erstellen der Kurz-URL.",
     "description": "Error message when shortening URL was unsuccessful."
   },
+  "setup_error": {
+    "message": "Deine Einstellungen konnten nicht geladen werden. Bitte überprüfe deine Einstellungen.",
+    "description": "Error message when settings could not be loaded."
+  },
   "customurl_title": {
     "message": "Benutzer-URL",
     "description": "Options: Label for custom URL text field."
