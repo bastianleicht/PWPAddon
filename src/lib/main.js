@@ -6,9 +6,8 @@ const pwpNotification = "pwp-notification";
 console.log("loaded extensions");
 
 /** Add context menus and toolbar button. */
-browserInterface.runtime.onInstalled.addListener(function () {
-  // per-page
-  browserInterface.contextMenus.create({
+browserAPI.runtime.onInstalled.addListener(function () {
+  browserAPI.contextMenus.create({
     id: 'shorten-page',
     title: _('menuitem_label'),
     contexts: ['selection']
@@ -16,24 +15,23 @@ browserInterface.runtime.onInstalled.addListener(function () {
 });
 
 /** Process content menu clicks */
-browserInterface.contextMenus.onClicked.addListener((info, tab) => {
+browserAPI.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
-  case 'shorten-page':
-    processPassword(info.selectionText);
-    break;
+    case 'shorten-page':
+      processPassword(info.selectionText);
+      break;
   }
 });
 
 /** Listen to keyboard shortcut. */
-browserInterface.commands.onCommand.addListener((cmd) => {
+browserAPI.commands.onCommand.addListener((cmd) => {
   if (cmd === 'shorten-page-url') {
     discoverSelectedContent();
   }
 });
 
-browserInterface.browserAction.onClicked.addListener(() => {
-  const clearing = browserInterface.notifications.clear(pwpNotification);
-  clearing.then(() => {
+browserAPI.action.onClicked.addListener(() => {
+  browserAPI.notifications.clear(pwpNotification).then(() => {
     console.log("cleared");
   });
 });
@@ -114,16 +112,14 @@ async function finalizeUrl(result) {
     navigator.clipboard.writeText(copyText);
 
     notify(_('copied_to_clipboard'));
-
   });
 }
-
 
 /** Handle a URL found on the page */
 function processPassword(selected_password) {
   console.log("selected_password", selected_password);
 
-  browserInterface.storage.local.get('prefs').then(ret => {
+  browserAPI.storage.local.get('prefs').then(ret => {
     const prefs = ret['prefs'] || {};
 
     if(prefs.clearWhitespace === true) {
@@ -135,13 +131,36 @@ function processPassword(selected_password) {
   });
 }
 
-function notify(message)
-{
-  browserInterface.notifications.create(pwpNotification, {
+function notify(message) {
+  browserAPI.notifications.create(pwpNotification, {
     "type": "basic",
     "title": "PWPush",
     "message": message,
     "priority": 2,
-    "iconUrl": browser.runtime.getURL("data/img/icon-48.png"),
+    "iconUrl": browserAPI.runtime.getURL("data/img/icon-48.png"),
   });
 }
+
+// Service Worker korrekt initialisieren
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    Promise.resolve()
+      .then(() => {
+        console.log('Service Worker installed');
+      })
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    Promise.resolve()
+      .then(() => {
+        console.log('Service Worker activated');
+        return self.clients.claim();
+      })
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  // Leerer fetch handler ist erforderlich
+});
