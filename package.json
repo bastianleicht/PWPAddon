@@ -1,0 +1,19 @@
+{
+  "name": "pwpaddon",
+  "version": "1.0.7",
+  "license": "MIT",
+  "author": "Bastian Leicht",
+  "scripts": {
+    "build": "web-ext build --source-dir=src --artifacts-dir=build --overwrite-dest",
+    "test": "web-ext run --source-dir=src --verbose --browser-console --start-url example.com",
+    "testChrome": "web-ext run --source-dir=src --target=chromium --verbose --browser-console --start-url example.com",
+    "lint": "web-ext lint --source-dir=src"
+  },
+  "dependencies": {
+    "web-ext": "^8.4.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.307",
+    "@types/firefox-webext-browser": "^120.0.4"
+  }
+}
