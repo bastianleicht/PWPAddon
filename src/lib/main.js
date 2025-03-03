@@ -26,7 +26,7 @@ browserAPI.contextMenus.onClicked.addListener((info, tab) => {
 /** Listen to keyboard shortcut. */
 browserAPI.commands.onCommand.addListener((cmd) => {
   if (cmd === 'shorten-page-url') {
-    discoverSelectedContent();
+    //TODO: Add Keyboard shortcut
   }
 });
 
@@ -44,7 +44,7 @@ function createPWPLink(password) {
 
       if (ret['prefs'] instanceof Promise) {
         console.info("no prefs");
-        const defaultPrefs = {
+        prefs = {
           custom_url: 'https://pwpush.com/',
           clearWhitespace: false,
           pwp_expire_after_days: 7,
@@ -52,7 +52,6 @@ function createPWPLink(password) {
           pwp_deletable_by_viewer: true,
           pwp_retrieval_step: true
         };
-        prefs = defaultPrefs;
       } else {
         prefs = ret['prefs'] || {};
       }
@@ -123,6 +122,7 @@ async function finalizeUrl(result) {
       copyText += '/r/';
     }
 
+    // https://stackoverflow.com/a/71336017
     browserAPI.tabs.query({active: true, currentWindow: true}, function(tabs) {
       browserAPI.tabs.sendMessage(tabs[0].id,
           {
