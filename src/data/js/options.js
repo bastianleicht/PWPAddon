@@ -36,16 +36,21 @@ function init() {
   });
 
   // Restore settings.
-  browserInterface.storage.local.get('prefs').then(res => {
-    let currentPrefs = res['prefs'] || {};
-    Object.keys(options).forEach(id => {
-      console.log("save");
-      console.log(options)
-      console.log(id, options[id].attr, document.getElementById(id)[options[id].attr]);
-      let val = (typeof currentPrefs[id] !== 'undefined') ? currentPrefs[id] : options[id].def;
-      console.log(id, options[id].attr, val);
-      document.getElementById(id)[options[id].attr] = val;
-    });
+  const getPrefs = browserInterface.storage.local.get('prefs');
+  
+  // Handle both Promise (Firefox) and chrome.storage.StorageArea (Chrome) cases
+  if (getPrefs instanceof Promise) {
+    getPrefs.then(handlePrefs);
+  } else {
+    getPrefs(handlePrefs);
+  }
+}
+
+function handlePrefs(res) {
+  let currentPrefs = res['prefs'] || {};
+  Object.keys(options).forEach(id => {
+    let val = (typeof currentPrefs[id] !== 'undefined') ? currentPrefs[id] : options[id].def;
+    document.getElementById(id)[options[id].attr] = val;
   });
 }
 
@@ -54,15 +59,14 @@ function saveOptions(e) {
 
   let toSave = {prefs: {}};
   Object.keys(options).forEach(id => {
-    console.log("save");
-    console.log(options)
-    console.log(id, options[id].attr, document.getElementById(id)[options[id].attr]);
     toSave['prefs'][id] = document.getElementById(id)[options[id].attr];
   });
-  browserInterface.storage.local.set(toSave).then(() => {
-    // Indicate that we saved succesfully.
-    let saved = document.querySelector('#saved');
 
+  const saveOperation = browserInterface.storage.local.set(toSave);
+
+  // Handle both Promise (Firefox) and chrome.storage.StorageArea (Chrome) cases
+  function handleSaved() {
+    let saved = document.querySelector('#saved');
     saved.style.display = 'block';
 
     if (savedTimeout) {
@@ -71,8 +75,14 @@ function saveOptions(e) {
     savedTimeout = setTimeout(() => {
       saved.style.display = 'none';
       savedTimeout = null;
-    }, 3000)
-  });
+    }, 3000);
+  }
+
+  if (saveOperation instanceof Promise) {
+    saveOperation.then(handleSaved);
+  } else {
+    saveOperation(handleSaved);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
