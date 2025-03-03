@@ -1,11 +1,4 @@
-var browserInterface;
-if (typeof chrome.app !== 'undefined') {
-  console.log("We are running on Chrome!");
-  browserInterface = chrome;
-} else {
-  console.log("We are running on Firefox!");
-  browserInterface = browser;
-}
+const browserInterface = typeof chrome !== 'undefined' ? chrome : browser;
 
 const options = {
   custom_url: {

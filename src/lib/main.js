@@ -1,15 +1,7 @@
-var browserInterface;
-if (typeof chrome.app !== 'undefined') {
-  console.log("We are running on Chrome!");
-  browserInterface = chrome;
-} else {
-  console.log("We are running on Firefox!");
-  browserInterface = browser;
-}
+const browserAPI = typeof chrome !== 'undefined' ? chrome : browser;
+const _ = browserAPI.i18n.getMessage;
 
 const pwpNotification = "pwp-notification";
-
-const _ = browserInterface.i18n.getMessage;
 
 console.log("loaded extensions");
 
