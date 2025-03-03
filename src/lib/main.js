@@ -104,7 +104,7 @@ function createPWPLink(password) {
 async function finalizeUrl(result) {
   console.log('finalizeUrl', result)
 
-  browserInterface.storage.local.get('prefs').then(async ret => {
+  browserAPI.storage.local.get('prefs').then(async ret => {
     const prefs = ret['prefs'] || {};
     let copyText;
 
@@ -123,7 +123,20 @@ async function finalizeUrl(result) {
       copyText += '/r/';
     }
 
-    navigator.clipboard.writeText(copyText);
+    // Erst aktive Tab finden, dann Text kopieren
+    const [tab] = await browserAPI.tabs.query({ active: true, currentWindow: true });
+    await browserAPI.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: text => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      },
+      args: [copyText]
+    });
 
     notify(_('copied_to_clipboard'));
   });
