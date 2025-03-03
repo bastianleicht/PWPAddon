@@ -123,20 +123,13 @@ async function finalizeUrl(result) {
       copyText += '/r/';
     }
 
-    // Erst aktive Tab finden, dann Text kopieren
-    const [tab] = await browserAPI.tabs.query({ active: true, currentWindow: true });
-    await browserAPI.scripting.executeScript({
-      target: { tabId: tab.id },
-      func: text => {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-      },
-      args: [copyText]
-    });
+    browserAPI.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      browserAPI.tabs.sendMessage(tabs[0].id,
+          {
+            message: "PWPcopyText",
+            textToCopy: copyText
+          }, function(response) {})
+    })
 
     notify(_('copied_to_clipboard'));
   });

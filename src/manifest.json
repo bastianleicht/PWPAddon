@@ -16,8 +16,7 @@
     "clipboardWrite",
     "contextMenus",
     "notifications",
-    "storage",
-    "scripting"
+    "storage"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -26,6 +25,14 @@
     "scripts": ["lib/main.js"],
     "service_worker": "lib/main.js"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["lib/copyScript.js"]
+    }
+  ],
   "commands": {
     "shorten-page-url": {
       "suggested_key": { "default": "Ctrl+Shift+L" },
