@@ -49,8 +49,7 @@ function init() {
 function handlePrefs(res) {
   let currentPrefs = res['prefs'] || {};
   Object.keys(options).forEach(id => {
-    let val = (typeof currentPrefs[id] !== 'undefined') ? currentPrefs[id] : options[id].def;
-    document.getElementById(id)[options[id].attr] = val;
+    document.getElementById(id)[options[id].attr] = (typeof currentPrefs[id] !== 'undefined') ? currentPrefs[id] : options[id].def;
   });
 }
 
