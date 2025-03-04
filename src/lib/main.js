@@ -3,7 +3,7 @@ const _ = browserAPI.i18n.getMessage;
 
 const pwpNotification = "pwp-notification";
 
-console.log("loaded extensions");
+console.log("loaded extension");
 
 /** Add context menus and toolbar button. */
 browserAPI.runtime.onInstalled.addListener(function () {
@@ -31,9 +31,7 @@ browserAPI.commands.onCommand.addListener((cmd) => {
 });
 
 browserAPI.action.onClicked.addListener(() => {
-  browserAPI.notifications.clear(pwpNotification).then(() => {
-    console.log("cleared");
-  });
+  browserAPI.notifications.clear(pwpNotification);
 });
 
 /** Push the password to the selected Service */
@@ -135,7 +133,7 @@ async function finalizeUrl(result) {
   });
 }
 
-/** Handle a URL found on the page */
+// Processes the selected password/text and clears Whitespace if enabled.
 function processPassword(selected_password) {
   console.log("selected_password", selected_password);
 
@@ -151,6 +149,7 @@ function processPassword(selected_password) {
   });
 }
 
+// Sends a browser notification
 function notify(message) {
   browserAPI.notifications.create(pwpNotification, {
     "type": "basic",
@@ -161,7 +160,6 @@ function notify(message) {
   });
 }
 
-// Service Worker korrekt initialisieren
 self.addEventListener('install', (event) => {
   event.waitUntil(
     Promise.resolve()
