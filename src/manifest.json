@@ -18,7 +18,7 @@
   },
   "manifest_version": 3,
   "permissions": [
-    "tabs",
+    "activeTab",
     "clipboardWrite",
     "contextMenus",
     "notifications",
